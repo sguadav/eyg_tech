@@ -78,14 +78,14 @@ def main_calculator(green_original=None):
     print("             Calculadora de germinacion         \n")
     print("--------------------------------------------------")
     print("\nLista de productos:                             ")
-    print("- Girasol                                         ")
-    print("- Guisante                                        ")
-    print("- Brocoli                                         ")
-    print("- Rabano                                          ")
+    print("- Girasol (GIR)                                   ")
+    print("- Guisante (GUI)                                  ")
+    print("- Brocoli (BRO)                                   ")
+    print("- Rabano (RAB)                                    ")
     print("- Spicy Salad Mix (SSM)                           ")
-    print("- Cilantro                                        ")
+    print("- Cilantro (CIL)                                  ")
     print("- Berro 2 (BERR2)                                 ")
-    print("- Albahaca                                        ")
+    print("- Albahaca (ALB)                                  ")
     print("- Guisante 2 (GUI2)                             \n")
 
     repeat_order = True
@@ -97,16 +97,34 @@ def main_calculator(green_original=None):
             print("Que producto desea calcular el tiempo de germinacion?")
             green_original = input('- ')
             print()
-            green = green_original.lower().rstrip()
+            green = green_original.lower().rstrip().replace(' ', '')
 
             if green not in greens_data.keys():
-                if green == 'spicy salad mix' or green == 'spicy salad mix (ssm)':
+                if green == 'spicysaladmix' or green == 'spicysaladmix(ssm)':
                     green = 'ssm'
                     repeat_product_inquiry = False
-                elif green == 'berro 2' or green == 'berro2' or green == 'berr 2' or green == 'berro 2 (berr2)':
+                elif green == 'berro2' or green == 'berro2(berr2)':
                     green = 'berr2'
                     repeat_product_inquiry = False
-                elif green == 'guisante 2' or green == 'guisante2' or green == 'gui 2' or green == 'guisante 2 (gui2)':
+                elif green == 'gir' or green == 'girasol(gir)':
+                    green = 'girasol'
+                    repeat_product_inquiry = False
+                elif green == 'gui' or green == 'guisante(gui)':
+                    green = 'guisante'
+                    repeat_product_inquiry = False
+                elif green == 'bro' or green == 'brocoli(bro)':
+                    green = 'brocoli'
+                    repeat_product_inquiry = False
+                elif green == 'rab' or green == 'rabano(rab)':
+                    green = 'rabano'
+                    repeat_product_inquiry = False
+                elif green == 'cil' or green == 'cilantro(cil)':
+                    green = 'cilantro'
+                    repeat_product_inquiry = False
+                elif green == 'alb' or green == 'albahaca(alb)':
+                    green = 'albahaca'
+                    repeat_product_inquiry = False
+                elif green == 'guisante2' or green == 'guisante2(gui2)':
                     green = 'gui2'
                     repeat_product_inquiry = False
                 else: 
@@ -151,7 +169,7 @@ def main_calculator(green_original=None):
         print("\nQuiere hacer otro calculo con un nuevo producto? Si o No?")
         repeat_answer = input('- ').lower()
         print()
-        if repeat_answer == 'no':
+        if repeat_answer != 'si':
             repeat_order = False
     print("\nListo.\n")
     return germination_date
@@ -159,3 +177,8 @@ def main_calculator(green_original=None):
 
 if __name__ == '__main__':
     main_calculator()
+    # To run file: 'python3 time_calculator.py'
+
+    # To instal;:
+    # python3 -m pip install datetime
+    # python3 -m pip install pytz
